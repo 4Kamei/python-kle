@@ -163,6 +163,7 @@ class KLEKey(object):
 
     def get_legend_str(self):
         result = ""
+        print(self._legends)
         for key in range(len(KLEKey.LEGEND_MAP)):
             result += self._legends[key] + "\n"
         return result.strip("\n")
@@ -311,7 +312,7 @@ class KLEKey(object):
 
     def __str__(self):
         return "KLEKey(legend={}, ux={}, uy={}, uw={}, uh={}, r={})".format(
-            repr(self.get_legend_text()), self._u_x, self._u_y, self._u_w, self._u_h, self._r
+            repr(self.get_legend_list()), self._u_x, self._u_y, self._u_w, self._u_h, self._r
         )
 
     def __repr__(self):
@@ -378,7 +379,7 @@ class KeyProperties(object):
         if 'l' in obj:
             props.stepped = bool(obj['l'])
         if 'n' in obj:
-            props.stepped = bool(obj['n'])
+            props.homing = bool(obj['n'])
         return props
 
     def to_json(self):
